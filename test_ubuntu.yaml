@@ -1,0 +1,20 @@
+---
+- name: Test automated Ubuntu image
+  host: localhost
+  
+  tasks:
+  - name: Create a new instance and attaches to a network and passes metadata to the instance
+    os_server:
+       state: present
+       name: ubuntuTest
+       image "Bionic Server"
+       terminate_volume: yes
+       key_name: ahome
+       timeout: 200
+       flavor: 15db5cd6-50bd-4b75-91a3-24760bd42723
+       auto_ip: yes
+       reuse_ips: yes
+       network: 9ed111d0-c8c4-4ab1-a834-592bf1ab37b1
+       security_groups: default
+       meta:
+         os: ubuntu
